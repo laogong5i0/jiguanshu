@@ -1,6 +1,7 @@
 export * from './Input'
 export * from './Text'
 export * from './FormLayout'
+export * from './Page'
 export * from './CSSStyle'
 export * from './Form'
 export * from './FormItem'

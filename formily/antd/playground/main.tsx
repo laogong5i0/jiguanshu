@@ -37,6 +37,7 @@ import {
 } from './widgets'
 import { saveSchema } from './service'
 import {
+  Page,
   Form,
   Field,
   Input,
@@ -110,7 +111,7 @@ const App = () => {
             },
           }),
         ],
-        rootComponentName: 'Form',
+        rootComponentName: 'Page',
       }),
     []
   )
@@ -143,6 +144,7 @@ const App = () => {
             <ResourceWidget
               title="sources.Layouts"
               sources={[
+                Page,
                 Card,
                 FormGrid,
                 FormTab,
@@ -177,6 +179,7 @@ const App = () => {
                 {() => (
                   <ComponentTreeWidget
                     components={{
+                      Page,
                       Form,
                       Field,
                       Input,

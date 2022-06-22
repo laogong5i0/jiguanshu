@@ -1,6 +1,6 @@
 export const FormGrid = {
   'zh-CN': {
-    title: '网格布局',
+    title: '网格布局1233',
     addGridColumn: '添加网格列',
     settings: {
       'x-component-props': {
