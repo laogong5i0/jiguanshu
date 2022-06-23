@@ -29,6 +29,7 @@ import {
   ArrayTable,
   ArrayCards,
 } from '@formily/antd'
+import { Page } from '@designable/page'
 import { Card, Slider, Rate } from 'antd'
 import { TreeNode } from '@designable/core'
 import { transformToSchema } from '@designable/formily-transformer'
@@ -76,16 +77,35 @@ const SchemaField = createSchemaField({
   },
 })
 
+export enum rootType {
+  Page = 'Page',
+  Form = 'Form',
+}
+
 export interface IPreviewWidgetProps {
+  type: rootType
   tree: TreeNode
 }
 
-export const PreviewWidget: React.FC<IPreviewWidgetProps> = (props) => {
+export const PreviewWidget: React.FC<IPreviewWidgetProps> = ({
+  type,
+  ...props
+}) => {
   const form = useMemo(() => createForm(), [])
-  const { form: formProps, schema } = transformToSchema(props.tree)
-  return (
-    <Form {...formProps} form={form}>
-      <SchemaField schema={schema} />
-    </Form>
-  )
+  const { form: formProps, schema } = transformToSchema(props.tree, {
+    designableFormName: type,
+  })
+  if (type === rootType.Page) {
+    return (
+      <Page {...formProps} form={form}>
+        <SchemaField schema={schema} />
+      </Page>
+    )
+  } else {
+    return (
+      <Form {...formProps} form={form}>
+        <SchemaField schema={schema} />
+      </Form>
+    )
+  }
 }

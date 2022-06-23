@@ -34,6 +34,7 @@ import {
   PreviewWidget,
   SchemaEditorWidget,
   MarkupSchemaWidget,
+  rootType,
 } from './widgets'
 import { saveSchema } from './service'
 import {
@@ -97,6 +98,7 @@ GlobalRegistry.registerDesignerLocales({
 })
 
 const App = () => {
+  const pageType = rootType.Page
   const engine = useMemo(
     () =>
       createDesigner({
@@ -111,7 +113,7 @@ const App = () => {
             },
           }),
         ],
-        rootComponentName: 'Page',
+        rootComponentName: pageType === rootType.Page ? 'Page' : 'Form',
       }),
     []
   )
@@ -213,14 +215,18 @@ const App = () => {
               </ViewPanel>
               <ViewPanel type="JSONTREE" scrollable={false}>
                 {(tree, onChange) => (
-                  <SchemaEditorWidget tree={tree} onChange={onChange} />
+                  <SchemaEditorWidget
+                    type={pageType}
+                    tree={tree}
+                    onChange={onChange}
+                  />
                 )}
               </ViewPanel>
               <ViewPanel type="MARKUP" scrollable={false}>
                 {(tree) => <MarkupSchemaWidget tree={tree} />}
               </ViewPanel>
               <ViewPanel type="PREVIEW">
-                {(tree) => <PreviewWidget tree={tree} />}
+                {(tree) => <PreviewWidget type={pageType} tree={tree} />}
               </ViewPanel>
             </ViewportPanel>
           </WorkspacePanel>

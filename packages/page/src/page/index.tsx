@@ -44,7 +44,7 @@ export const Page: React.FC<FormProps> = ({
 }
 
 Page.defaultProps = {
-  component: 'form',
+  component: 'div',
 }
 
 export default Page
