@@ -5,6 +5,7 @@ import { observer } from '@formily/react'
 import { Page as FormilyForm } from '@designable/page'
 import { usePrefix, DnFC } from '@designable/react'
 import { AllSchemas } from '../../schemas'
+import { createPageSchema } from '../Field'
 import { AllLocales } from '../../locales'
 import './styles.less'
 
@@ -40,13 +41,14 @@ Page.Behavior = createBehavior({
       cloneable: !node.isRoot,
       deletable: !node.isRoot,
       droppable: true,
-      propsSchema: {
-        type: 'object',
-        properties: {
-          ...(AllSchemas.Page.properties as any),
-          style: AllSchemas.CSSStyle,
-        },
-      },
+      propsSchema: createPageSchema(),
+      // propsSchema: {
+      //   type: 'object',
+      //   properties: {
+      //     ...(AllSchemas.Page.properties as any),
+      //     style: AllSchemas.CSSStyle,
+      //   },
+      // },
       defaultProps: {
         labelCol: 6,
         wrapperCol: 12,

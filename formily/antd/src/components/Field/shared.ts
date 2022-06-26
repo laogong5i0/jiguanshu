@@ -4,8 +4,59 @@ import {
   DataSourceSetter,
   ValidatorSetter,
 } from '@designable/formily-setters'
+import { FormTab } from '@formily/antd'
 import { FormItemSwitcher } from '../../common/FormItemSwitcher'
 import { AllSchemas } from '../../schemas'
+
+const formTab = FormTab.createFormTab()
+export const createPageSchema = (component?: ISchema, decorator?: ISchema) => {
+  return {
+    type: 'object',
+    properties: {
+      'tap-group': {
+        type: 'void',
+        'x-component': 'FormTab',
+        'x-component-props': {
+          formTab: formTab,
+        },
+        properties: {
+          tab1: {
+            type: 'void',
+            'x-component': 'FormTab.TabPane',
+            'x-component-props': {
+              tab: 'A1',
+            },
+            properties: {
+              aaa: {
+                type: 'string',
+                title: 'AAA',
+                'x-decorator': 'FormItem',
+                required: true,
+                'x-component': 'Input',
+              },
+            },
+          },
+          tab2: {
+            type: 'void',
+            'x-component': 'FormTab.TabPane',
+            'x-component-props': {
+              tab: '数据源配置',
+            },
+            properties: {
+              url: {
+                type: 'string',
+                title: 'AAA',
+                'x-decorator': 'FormItem',
+                required: true,
+                'x-component': 'Input',
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+}
 
 export const createComponentSchema = (
   component: ISchema,

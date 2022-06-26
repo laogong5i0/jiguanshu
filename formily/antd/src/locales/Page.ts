@@ -5,6 +5,8 @@ export const Page = createLocales(Component, {
   'zh-CN': {
     title: '页面22333',
     settings: {
+      aaa: 'jjii',
+      url: '接口URL',
       labelCol: '标签网格宽度',
       wrapperCol: '组件网格宽度',
       colon: '是否有冒号',
