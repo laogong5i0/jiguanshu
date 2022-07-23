@@ -113,7 +113,7 @@ const App = () => {
             },
           }),
         ],
-        rootComponentName: pageType === rootType.Page ? 'Page' : 'Form',
+        rootComponentName: rootType.Page === pageType ? 'Page' : 'Form',
       }),
     []
   )
