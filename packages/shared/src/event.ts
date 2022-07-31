@@ -322,6 +322,13 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     })
   }
 
+  /**
+   * 添加事件监听
+   * @param container
+   * @param contentWindow
+   * @param context
+   * @returns
+   */
   attachEvents(
     container: EventContainer,
     contentWindow: Window = globalThisPolyfill,
@@ -344,6 +351,11 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     }
   }
 
+  /**
+   * 移除container的事件监听
+   * @param container
+   * @returns
+   */
   detachEvents(container?: EventContainer) {
     if (!container) {
       this.containers.forEach((container) => {

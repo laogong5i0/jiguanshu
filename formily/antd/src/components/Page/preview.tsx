@@ -65,18 +65,9 @@ Page.Resource = createResource({
     {
       componentName: 'Field',
       props: {
-        type: 'void',
+        type: 'object',
         'x-component': 'Page',
       },
-      children: [
-        {
-          componentName: 'Field',
-          props: {
-            type: 'void',
-            'x-component': 'FormGrid.GridColumn',
-          },
-        },
-      ],
     },
   ],
 })
